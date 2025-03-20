@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique 12-Character Code Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .code {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Generate Unique 12-Character Code</h1>
+    <button onclick="generateUniqueCode()">Generate Code</button>
+    <div class="code" id="codeDisplay">Click the button to generate a code</div>
+</div>
+
+<script>
+    const generatedCodes = new Set();
+
+    function generateUniqueCode() {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let code;
+
+        do {
+            code = '';
+            for (let i = 0; i < 12; i++) {
+                code += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+        } while (generatedCodes.has(code));
+
+        generatedCodes.add(code);
+        document.getElementById('codeDisplay').textContent = code;
+    }
+</script>
+</body>
+</html>
